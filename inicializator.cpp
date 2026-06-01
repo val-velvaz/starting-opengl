@@ -2,10 +2,37 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+
+#include "initializator.hpp"	
+#include "input.hpp"
+#include "rendering_commands.hpp"
+
+
 // resize a window
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
-int main() {
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+	glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow* window) {
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+}
+
+void renderLoop(GLFWwindow* window) {
+	while (!glfwWindowShouldClose(window)) {
+		//input
+		inputProcessing(window);
+
+		//rendering commands 
+		renderingCommands(window);
+
+		//check and call events and swap the buffers
+		glfwPollEvents();
+		glfwSwapBuffers(window);
+	}
+}
+
+int inicializator() {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -26,38 +53,17 @@ int main() {
 		return -1;
 	}
 
+
 	//rendering window size
 	glViewport(0, 0, 800, 600); // px
 	// set equal to glfws window sie
 
+	// could make a window object
+
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	// RENDER LOOP
-	while (!glfwWindowShouldClose(window)) {
-		//input
-		processInput(window);
-
-		//rendering commands 
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT); // can also use glclearcolor
-
-		glfwSwapBuffers(window);
-
-		//check and call events and swap the buffers
-		glfwPollEvents();
-		glfwSwapBuffers(window);
-	}
+	renderingCommands(window);
 
 	glfwTerminate(); // raii
-	return 0;
-}
-
-// resize a window
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-	glViewport(0, 0, width, height);
-}
-
-void processInput(GLFWwindow* window) {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, true);
 }

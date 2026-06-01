@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="flow-fields.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="inicializator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="initializator.hpp" />
+    <ClInclude Include="input.hpp" />
+    <ClInclude Include="rendering_commands.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
