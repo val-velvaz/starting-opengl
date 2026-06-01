@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="flow-fields.vcxproj" />
+  <Project Path="flow-fields.vcxproj" Id="6c1bd7ab-4c5c-4c49-bf5d-d27d7b03ef5a" />
 </Solution>

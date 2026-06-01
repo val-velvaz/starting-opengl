@@ -129,11 +129,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="inicializator.cpp" />
+    <ClCompile Include="Triangle.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializator.hpp" />
     <ClInclude Include="input.hpp" />
     <ClInclude Include="rendering_commands.hpp" />
+    <ClInclude Include="vertex_shdr.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
